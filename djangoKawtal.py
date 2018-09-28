@@ -1,0 +1,3 @@
+
+class Kawtal(object):
+    pass
