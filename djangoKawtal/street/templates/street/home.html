@@ -1,21 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "bs4/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Street</title>
-</head>
 
-<body>
-    <h1>Welcome to the Street Home !</h1>
-    {% for post in posts %}
-    <h2>{{ post.author }}</h2>
-    <p>{{ post.content }}</p>
-    <small>{{ post.date }}</small>
-    <small><b>{{ post.location }}</b></small>
-    {% endfor %}
-</body>
+{% block home %}
+<div class="bg-light">
 
-</html>
+    <!--Navbar-->
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-wrap2 flex-md-nowrap p-0">
+        <a class="navbar-brand col-auto mr-0" href="#">Brand</a>
+
+        <button class="navbar-toggler d-md-none mt-1 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="input-group py-1 px-2 px-md-0">
+            <input class="form-control form-control-dark" type="text" placeholder="Search here..." aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+
+        <ul class="navbar-nav navbar-expand-md pl-2 pr-3">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto text-nowrap">
+                    <li class="nav-item my-1 active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown my-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Sports</a>
+                            <a class="dropdown-item" href="#">Hot</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Mad Science</a>
+                        </div>
+                    </li>
+                    <li class="nav-item my-1">
+                        <a href="#" class="nav-link btn btn-outline-secondary"><i class="fa fa-user"></i> My account</a>
+                    </li>
+                </ul>
+            </div>
+        </ul>
+    </nav>
+    <!--/.Navbar-->
+
+    <!-- <Separator> -->
+    <div class="row">
+        <div class="col-sm-12 mb-4"></div>
+    </div>
+    <!-- </Separator> -->
+
+    <!-- <Page> -->
+    <div class="row">
+        <div class="col-sm-3 ml-2 mr-4 bg-white">
+            INFO
+        </div>
+        <div class="col-sm-5 mr-2 bg-white">
+            <!-- <writePost> -->
+            <div class="form-group">
+                <label for="writePost"></label>
+                <textarea class="form-control" id="writePost" rows="3"></textarea>
+            </div>
+            <!-- </writePost> -->
+            {% for post in posts %}
+            <h2>{{ post.author }}</h2>
+            <p>{{ post.content }}</p>
+            <small>{{ post.date }}</small>
+            <small><b>{{ post.location }}</b></small>
+            <div class="row">
+                <div class="col-sm my-4 bg-secondary"></div>
+            </div> {% endfor %}
+            Other posts here
+        </div>
+        <div class="col-sm-3 ml-3 mr-2 bg-white">
+            INFO
+        </div>
+    </div>
+    <!-- </Page> -->
+
+</div>
+{% endblock home %}
