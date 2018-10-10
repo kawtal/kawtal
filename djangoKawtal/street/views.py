@@ -12,21 +12,21 @@ posts = [
     },
     {
         'author': "Sira",
-        'image': "",
+        'image': "street/img/mctr-fb.jpg",
         'content': "Hello, where is Bus 23",
         'location': "Dakar Plateau",
         'date': "September 29, 2018"
     },
     {
         'author': "Samba",
-        'image': "",
+        'image': "street/img/mctr-fb.jpg",
         'content': "I have just lost my pocket",
         'location': "Dakar Plateau",
         'date': "September 29, 2018"
     },
     {
         'author': "Sira",
-        'image': "",
+        'image': "street/img/mctr-fb.jpg",
         'content': "Taxi please",
         'location': "Dakar Plateau",
         'date': "September 29, 2018"
@@ -34,9 +34,16 @@ posts = [
 
 ]
 
+user = {
+    "firstname": "Moctar",
+    "lastname": "Diallo",
+    'image': "street/img/mctr-fb.jpg",
+}
+
 
 def home(request):
     context = {
         'posts': posts,
+        'user': user
     }
     return render(request, 'street/home.html', context)

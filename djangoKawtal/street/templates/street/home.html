@@ -1,5 +1,5 @@
-{% extends "base/bs4.html" %}
-
+{% extends "base/mdb.html" %}
+{% load static %}
 
 {% block home %}
 <div class="bg-light">
@@ -8,39 +8,38 @@
     <nav class="navbar navbar-dark sticky-top bg-dark flex-wrap2 flex-md-nowrap p-0">
         <a class="navbar-brand col-auto mr-0" href="#">Brand</a>
 
+        <!-- <SearchBox> -->
+        <form class="form-inline md-form form-sm active-pink active-pink-2">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+        </form>
+        <!-- </SearchBox> -->
+
+        <!-- <Toogler> -->
         <button class="navbar-toggler d-md-none mt-1 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="input-group py-1 px-2 px-md-0">
-            <input class="form-control form-control-dark" type="text" placeholder="Search here..." aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
-            </div>
-        </div>
+        <!-- </Toogler> -->
 
         <ul class="navbar-nav navbar-expand-md pl-2 pr-3">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto text-nowrap">
-                    <li class="nav-item my-1 active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown my-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-folder-open" aria-hidden="true"></i>
-                            Categories
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light">1
+                            <i class="fa fa-envelope"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Sports</a>
-                            <a class="dropdown-item" href="#">Hot</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Mad Science</a>
-                        </div>
                     </li>
-                    <li class="nav-item my-1">
-                        <a href="#" class="nav-link btn btn-outline-secondary"><i class="fa fa-user"></i> My account</a>
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <img src="{% static user.image %}" class="rounded-circle z-depth-0 image-profile" alt="avatar image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+                            <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -55,30 +54,79 @@
     <!-- </Separator> -->
 
     <!-- <Page> -->
-    <div class="row">
-        <div class="col-sm-3 ml-2 mr-4 bg-white">
-            INFO
+    <div id="page" class="row">
+        <!-- <Left> -->
+        <div id="left" class="col-sm-3 mr-0 ml-4 bg-white">
+            <!-- <SearchBox> -->
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <span class="input-group-text red lighten-3" id="basic-text1"><i class="fa fa-search text-grey"
+                            aria-hidden="true"></i></span>
+                </div>
+            </div>
+            <!-- </SearchBox> -->
+            <!-- <Map> -->
+            <div id="map" class="map">
+                <img src="{% static map.jpg %}" class="img-thumbnail">
+            </div>
+            <!-- </Map> -->
+            <!-- <Separator> -->
+            <div class="row">
+                <div class="col-sm my-4 bg-secondary"></div>
+            </div>
+            <!-- </Separator> -->
         </div>
-        <div class="col-sm-5 mr-2 bg-white">
+        <!-- </Left> -->
+
+        <!-- <Center> -->
+        <div id="center" class="col-sm-5 mr-0 ml-2 bg-white">
             <!-- <writePost> -->
             <div class="form-group">
                 <label for="writePost"></label>
-                <textarea class="form-control" id="writePost" rows="3"></textarea>
+                <textarea class="form-control" id="writePost" rows="3" placeholder="Start a discussion"></textarea>
             </div>
             <!-- </writePost> -->
-            {% for post in posts %}
-            <h2>{{ post.author }}</h2>
-            <p>{{ post.content }}</p>
-            <small>{{ post.date }}</small>
-            <small><b>{{ post.location }}</b></small>
+
+            <!-- <Separator> -->
             <div class="row">
                 <div class="col-sm my-4 bg-secondary"></div>
-            </div> {% endfor %}
-            Other posts here
+            </div>
+            <!-- </Separator> -->
+
+
+            <!-- <Posts> -->
+            <div id="posts">
+                {% for post in posts %}
+                <!-- <Post> -->
+                <div id="post">
+                    <!-- <ProfileImage> -->
+                    <div>
+                        <img src="{% static post.image %}" class="rounded-circle z-depth-0 image-profile">
+                    </div>
+                    <!-- </ProfileImage> -->
+                    <h2>{{ post.author }}</h2>
+                    <p>{{ post.content }}</p>
+                    <small>{{ post.date }}</small>
+                    <small><b>{{ post.location }}</b></small>
+                </div>
+                <!-- </Post> -->
+                <!-- <Post Separator> -->
+                <div class="row">
+                    <div class="col-sm my-4 bg-secondary"></div>
+                </div>
+                <!-- </Post Separator> -->
+                {% endfor %}
+                Other posts here
+            </div>
+            <!-- </Posts> -->
         </div>
-        <div class="col-sm-3 ml-3 mr-2 bg-white">
+        <!-- </Center> -->
+        <!-- <Right> -->
+        <div id="right" class="col-sm-3 ml-2 mr-0 bg-white">
             INFO
         </div>
+        <!-- </Right> -->
     </div>
     <!-- </Page> -->
 
