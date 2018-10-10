@@ -108,8 +108,8 @@
         <div id="center" class="col-sm-6 mr-0 ml-2 bg-white">
             <!-- <writePost> -->
             <div class="md-form">
-                <textarea type="text" id="form7" class="md-textarea form-control" rows="1"></textarea>
-                <label for="form7">Hello</label>
+                <textarea type="text" id="form7" class="md-textarea form-control" rows="1" placeholder="Say something ..."></textarea>
+                <label for="form7"></label>
                 <!-- <ShareButton> -->
                 <button type="button" class="btn btn-default">
                     Share
@@ -134,12 +134,40 @@
                     <!-- <ProfileImage> -->
                     <div>
                         <img src="{% static post.image %}" class="rounded-circle float-left z-depth-0 image-profile">
-                        <h2> > {{ post.author }}</h2>
+                        <h2> {{ post.author }}</h2>
                     </div>
                     <!-- </ProfileImage> -->
-                    <p>{{ post.content }}</p>
+                    <!-- <PostContent> -->
+                    <div>
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <!-- </PostContent> -->
                     <small>{{ post.date }}</small>
                     <small><b>{{ post.location }}</b></small>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- <PostReactions> -->
+                    <div>
+                        <div>
+                            <!-- <Like> -->
+                            <a class="">
+                                <i class="fa fa-thumbs-o-up"></i> Like
+                            </a>
+                            <!-- </Like> -->
+                            <!-- <Comment> -->
+                            <a class="ml-5">
+                                <i class="fa fa-comment-o"></i> Commment
+                            </a>
+                            <!-- </Comment> -->
+                            <!-- <Share> -->
+                            <a class="ml-5">
+                                <i class="fa fa-share"></i> Share
+                            </a>
+                            <!-- </Share> -->
+                        </div>
+                    </div>
+                    <!-- </PostReactions>> -->
                 </div>
                 <!-- </Post> -->
                 <!-- <Post Separator> -->
