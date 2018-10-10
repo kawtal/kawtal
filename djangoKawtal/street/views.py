@@ -38,6 +38,7 @@ user = {
     "firstname": "Moctar",
     "lastname": "Diallo",
     'image': "street/img/mctr-fb.jpg",
+    "location": "street/img/user-location.jpg"
 }
 
 

@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block home %}
+<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+
 <div class="container-fluid bg-light">
 
     <!--Navbar-->
@@ -18,13 +20,13 @@
         <ul class="navbar-nav navbar-expand-md pl-2 pr-3">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto text-nowrap">
-                    <!-- <Home> -->
+                    <!-- <NavbarHome> -->
                     <li class="nav-item">
                         <a class="nav-link waves-effect waves-light">1
                             <i class="fa fa-home"></i>Home
                         </a>
                     </li>
-                    <!-- </Home> -->
+                    <!-- </NavbarHome> -->
                     <!-- <Envelope> -->
                     <li class="nav-item">
                         <a class="nav-link waves-effect waves-light">1
@@ -46,10 +48,14 @@
                             <img src="{% static user.image %}" class="rounded-circle z-depth-0 image-profile" alt="avatar image">
                             {{ user.firstname }}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                            <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                            <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                            <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                        <div class="dropdown">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
                         </div>
                     </li>
                     <!-- </Profile> -->
@@ -75,7 +81,7 @@
     <!-- <Page> -->
     <div id="page" class="row">
         <!-- <Left> -->
-        <div id="left" class="col-sm-3 mr-0 ml-4 bg-white">
+        <div id="left" class="col-sm-3 mr-0 ml-3 bg-white">
             <!-- <SearchBox> -->
             <div class="input-group md-form form-sm form-2 pl-0">
                 <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
@@ -87,7 +93,7 @@
             <!-- </SearchBox> -->
             <!-- <Map> -->
             <div id="map" class="map">
-                <img src="{% static map.jpg %}" class="img-thumbnail">
+                <img src="{% static user.location %}" class="img-fluid">
             </div>
             <!-- </Map> -->
             <!-- <Separator> -->
@@ -99,11 +105,17 @@
         <!-- </Left> -->
 
         <!-- <Center> -->
-        <div id="center" class="col-sm-5 mr-0 ml-2 bg-white">
+        <div id="center" class="col-sm-6 mr-0 ml-2 bg-white">
             <!-- <writePost> -->
-            <div class="form-group">
-                <label for="writePost"></label>
-                <textarea class="form-control" id="writePost" rows="3" placeholder="Start a discussion"></textarea>
+            <div class="md-form">
+                <textarea type="text" id="form7" class="md-textarea form-control" rows="1"></textarea>
+                <label for="form7">Hello</label>
+                <!-- <ShareButton> -->
+                <button type="button" class="btn btn-default">
+                    Share
+                    <span class="fa fa-share"></span>
+                </button>
+                <!-- </ShareButton> -->
             </div>
             <!-- </writePost> -->
 
@@ -121,10 +133,10 @@
                 <div id="post">
                     <!-- <ProfileImage> -->
                     <div>
-                        <img src="{% static post.image %}" class="rounded-circle z-depth-0 image-profile">
+                        <img src="{% static post.image %}" class="rounded-circle float-left z-depth-0 image-profile">
+                        <h2> > {{ post.author }}</h2>
                     </div>
                     <!-- </ProfileImage> -->
-                    <h2>{{ post.author }}</h2>
                     <p>{{ post.content }}</p>
                     <small>{{ post.date }}</small>
                     <small><b>{{ post.location }}</b></small>
@@ -142,7 +154,7 @@
         </div>
         <!-- </Center> -->
         <!-- <Right> -->
-        <div id="right" class="col-sm-3 ml-2 mr-0 bg-white">
+        <div id="right" class="col-sm-2 ml-3 mr-0 bg-white">
             INFO
         </div>
         <!-- </Right> -->
