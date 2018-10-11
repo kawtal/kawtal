@@ -2,13 +2,12 @@
 {% load static %}
 
 {% block home %}
-<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
 <div class="container-fluid bg-light">
 
     <!--Navbar-->
     <nav class="navbar navbar-dark sticky-top bg-dark flex-wrap2 flex-md-nowrap p-0">
-        <a class="navbar-brand col-auto mr-0" href="#">Brand</a>
+        <a class="navbar-brand col-auto mr-0" href="#">K</a>
 
         <!-- <Toogler> -->
         <button class="navbar-toggler d-md-none mt-1 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,30 +21,38 @@
                 <ul class="navbar-nav mr-auto text-nowrap">
                     <!-- <NavbarHome> -->
                     <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light">1
+                        <a class="nav-link waves-effect waves-light">
                             <i class="fa fa-home"></i>Home
                         </a>
                     </li>
                     <!-- </NavbarHome> -->
                     <!-- <Envelope> -->
                     <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light">1
+                        <a class="nav-link waves-effect waves-light">2
                             <i class="fa fa-envelope"></i>
                         </a>
                     </li>
                     <!-- </Envelope> -->
                     <!-- <Bell> -->
                     <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light">1
+                        <a class="nav-link waves-effect waves-light">3
                             <i class="fa fa-bell"></i>
                         </a>
                     </li>
                     <!-- </Bell> -->
+                    <!-- <Reputation> -->
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light">5
+                            <i class="fa fa-star"></i>
+                        </a>
+                    </li>
+                    <!-- </Reputation> -->
                     <!-- <Profile> -->
                     <li class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <img src="{% static user.image %}" class="rounded-circle z-depth-0 image-profile" alt="avatar image">
+                            <img src="{% static user.image %}" class="rounded-circle z-depth-0 image-profile ml-1" alt="avatar image"
+                                style="width:15px; height:15px">
                             {{ user.firstname }}
                         </a>
                         <div class="dropdown">
@@ -59,13 +66,6 @@
                         </div>
                     </li>
                     <!-- </Profile> -->
-                    <!-- <Friends> -->
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light">1
-                            <i class="fa fa-star"></i>
-                        </a>
-                    </li>
-                    <!-- </Friends> -->
                 </ul>
             </div>
         </ul>
@@ -101,6 +101,18 @@
                 <div class="col-sm my-4 bg-secondary"></div>
             </div>
             <!-- </Separator> -->
+            <!-- <OtherSites> -->
+            <div>
+                <h6 class="pb-2">Other Locations</h6>
+            </div>
+            {% for site in sites %}
+            <div>
+                <a href="#">{{ site.name }}</a><br>
+                {{ site.content }}
+            </div>
+            <div class="dropdown-divider"></div>
+            {% endfor %}
+            <!-- </OtherSites> -->
         </div>
         <!-- </Left> -->
 
@@ -111,10 +123,9 @@
                 <textarea type="text" id="form7" class="md-textarea form-control" rows="1" placeholder="Say something ..."></textarea>
                 <label for="form7"></label>
                 <!-- <ShareButton> -->
-                <button type="button">
-                    <a href="#">Share</a>
-                    <span class="fa fa-share"></span>
-                </button>
+                <a href="#">
+                    Post
+                </a>
                 <!-- </ShareButton> -->
             </div>
             <!-- </writePost> -->
@@ -125,53 +136,59 @@
             </div>
             <!-- </Separator> -->
 
-
             <!-- <Posts> -->
             <div id="posts">
                 {% for post in posts %}
                 <!-- <Post> -->
                 <div id="post">
-                    <!-- <ProfileImage> -->
-                    <div>
-                        <img src="{% static post.image %}" class="rounded-circle float-left z-depth-0 image-profile">
-                        <h2> {{ post.author }}</h2>
+                    <div class="row">
+                        <div class="col-1">
+                            <img src="{% static user.image %}" class="rounded-circle float-left z-depth-0 image-profile"
+                                style="width:25px; height:25px">
+                        </div>
+                        <div class="col">
+                            <span style="font-size:15px;"><b>{{ post.author }}</b> </span>
+                            <a href="#"><small><b>@{{ post.location }}</b></small></a>
+                            <small> - {{ post.date }} </small>
+                        </div>
+                        <div class="col-2">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#" style="font-size:10px">Follow</a></li>
+                                    <li><a href="#" style="font-size:10px">Hide</a></li>
+                                    <li><a href="#" style="font-size:10px">Block</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#" style="font-size:10px">Other</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <!-- </ProfileImage> -->
                     <!-- <PostContent> -->
-                    <div>
-                        <p>{{ post.content }}</p>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <p>{{ post.content }}</p>
+                        </div>
                     </div>
                     <!-- </PostContent> -->
-                    <small>{{ post.date }}</small>
-                    <small><b>{{ post.location }}</b></small>
 
                     <div class="dropdown-divider"></div>
 
                     <!-- <PostReactions> -->
-                    <div>
-                        <div>
-                            <a>3 Likes</a>
-                            <a class="ml-6">5 Comments</a>
+                    <div class="row">
+                        <div class="col-2">
+                            <a href="#"> <i class="fa fa-thumbs-o-up"></i> 3</a>
                         </div>
-
-                        <div class="dropdown-divider"></div>
-
-                        <div>
-                            <!-- <Like> -->
-                            <a href="#" class="">
-                                <i class="fa fa-thumbs-o-up"></i> Like
-                            </a>
-                            <!-- </Like> -->
-                            <!-- <Comment> -->
-                            <a href="#" class="ml-5">
-                                <i class="fa fa-comment-o"></i> Comment
-                            </a>
-                            <!-- </Comment> -->
-                            <!-- <Share> -->
-                            <a href="#" class="ml-5">
-                                <i class="fa fa-share"></i> Share
-                            </a>
-                            <!-- </Share> -->
+                        <div class="col-2">
+                            <a href="#"> <i class="fa fa-comment-o"></i> 5</a>
+                        </div>
+                        <div class="col-2">
+                            <a href="#"> <i class="fa fa-share"></i> 2</a>
+                        </div>
+                        <div class="col-2">
+                            <a href="#"> <i class="fa fa-envelope-o"></i></a>
                         </div>
                     </div>
                     <!-- </PostReactions>> -->

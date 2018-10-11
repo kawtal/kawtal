@@ -5,31 +5,27 @@ from django.http import HttpResponse
 posts = [
     {
         'author': "Samba",
-        'image': "street/img/mctr-fb.jpg",
         'content': "Hello I am looking for a barber",
         'location': "Medina",
-        'date': "September 29, 2018"
+        'date': "13d"
     },
     {
         'author': "Sira",
-        'image': "street/img/mctr-fb.jpg",
         'content': "Hello, where is Bus 23",
         'location': "Dakar Plateau",
-        'date': "September 29, 2018"
+        'date': "2w"
     },
     {
         'author': "Samba",
-        'image': "street/img/mctr-fb.jpg",
         'content': "I have just lost my pocket",
         'location': "Dakar Plateau",
-        'date': "September 29, 2018"
+        'date': "3h"
     },
     {
         'author': "Sira",
-        'image': "street/img/mctr-fb.jpg",
         'content': "Taxi please",
         'location': "Dakar Plateau",
-        'date': "September 29, 2018"
+        'date': "10m"
     },
 
 ]
@@ -41,10 +37,26 @@ user = {
     "location": "street/img/user-location.jpg"
 }
 
+sites = [
+    {
+        "name": "Guedjewaye",
+        "content": "Brief Content"
+    },
+    {
+        "name": "Grand Dakar",
+        "content": "Brief Content"
+    },
+    {
+        "name": "Medina, Rue 11x27",
+        "content": "Brief Content"
+    }
+]
+
 
 def home(request):
     context = {
         'posts': posts,
-        'user': user
+        'user': user,
+        'sites': sites
     }
     return render(request, 'street/home.html', context)
