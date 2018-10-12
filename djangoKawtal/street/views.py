@@ -5,26 +5,26 @@ from django.http import HttpResponse
 posts = [
     {
         'author': "Samba",
-        'content': "Hello I am looking for a barber",
-        'location': "Medina",
+        'content': "Il y'a beacoup d'innondation ici",
+        'location': "Guedjewaye",
         'date': "13d"
     },
     {
         'author': "Sira",
-        'content': "Hello, where is Bus 23",
+        'content': "Les marches sont en greve",
         'location': "Dakar Plateau",
         'date': "2w"
     },
     {
-        'author': "Samba",
-        'content': "I have just lost my pocket",
-        'location': "Dakar Plateau",
+        'author': "Modou",
+        'content': "Notre association vous invite a notre evenement culturel",
+        'location': "Medina",
         'date': "3h"
     },
     {
-        'author': "Sira",
-        'content': "Taxi please",
-        'location': "Dakar Plateau",
+        'author': "Fatou",
+        'content': "J'ai perdu un sac couleur noir, avec beaucoup de bijoux",
+        'location': "Colobane",
         'date': "10m"
     },
 
